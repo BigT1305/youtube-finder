@@ -1,3 +1,3 @@
 module.exports = {
-	API_KEY: 'AIzaSyASk6rA4fPkBQdbqlllFASlXQR3W5Fmcs8',
+	API_KEY: 'USE_YOUR_API_KEY',
 };
