@@ -1,26 +1,41 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { term:''};
+	constructor() {
+		super();
+		this.state = { 
+      term:''
+    };
+  }
 
-		this.onInputChange = this.onInputChange.bind(this);
-	}
-
-	onInputChange(event) {
-		this.setState({ term: event.target.value });
-		this.props.onSearchTermChange(event.target.value);
+	onInputChange = (e) => {
+    this.setState({term: e.target.value})
+  }
+	
+  onFormSubmit = (e) => {
+		e.preventDefault();
+    //callback function
+		this.props.onFormSubmit(this.state.term);
 	}
 
 	render() {
 		return (
-			<div className="search-bar">
-			  <input 
-          value={this.state.term}
-          onChange={this.onInputChange}
-			  />
-			</div>
+			<div className="ui segment search-bar">
+			  <form onSubmit={this.onFormSubmit} className="ui form">
+          <div className="field">
+            <div className="ui red ribbon label">YouTube Video Search</div>
+              <div className="ui input icon focus" style={{marginTop:"10px"}}>
+                <input 
+                  value={this.state.term}
+                  type="text"
+                  placeholder="Search"
+                  onChange={this.onInputChange}
+			          />
+                  <i className="search icon"></i>
+              </div>
+            </div>
+          </form>
+        </div>
 		);
 	}
 }

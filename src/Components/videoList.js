@@ -1,22 +1,21 @@
 import React from 'react';
 import VideoListItem from './VideoListItem';
 
-const VideoList = (props) => {
-	const videoItems = props.videos.map((video) => {
+const VideoList = ({ videos, onVideoSelect }) => {
+	const renderlist = videos.map(video => {
 		return (
       <VideoListItem
-        onUserSelected={props.onVideoSelect}
-        key={video.etag}
+        onVideoSelect={onVideoSelect}
         video={video}
       />
   	);
 	});
   
   return (
-    <ul className="col-md-4 list-group">
-      {videoItems}
-    </ul>
-  	);
+    <div className="ui relaxed divided list">
+      {renderlist}
+    </div>
+  );
 };
 
 export default VideoList;
